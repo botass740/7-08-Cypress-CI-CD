@@ -1,0 +1,8 @@
+{
+    "validEmail": "qamid@qamid.ru",
+    "validPass": "qamid",
+  
+    "invalidEmail": "qamidd@qamid.ru",
+    "invalidPass": "qamidd",
+    "adminValid": null
+}

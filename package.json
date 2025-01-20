@@ -1,0 +1,22 @@
+{
+  "name": "7.8-cypress_cicd",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "login": "cypress run --spec cypress/e2e/Login/**/* --record --key 28088171-f126-4795-98d9-a5721f7afcaa --group login --ci-build-id 9",
+    "mainPage": "cypress run --spec cypress/e2e/mainPage/**/* --record --key 28088171-f126-4795-98d9-a5721f7afcaa --group page --ci-build-id 9",
+    "movies": "cypress run --spec cypress/e2e/movies/**/* --record --key 28088171-f126-4795-98d9-a5721f7afcaa --group seats --ci-build-id 9",
+    "all": "npm run login | npm run mainPage | npm run movies",
+    "parallel": "concurrently \"npm run login\" \"npm run mainPage\" \"npm run movies\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "cypress": "^14.0.0",
+    "concurrently": "^9.1.2"
+  },
+  "dependencies": {
+  }
+}
