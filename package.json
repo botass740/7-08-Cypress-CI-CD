@@ -3,11 +3,28 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "login": "cypress run --spec cypress/e2e/Login/**/* --record --key 28088171-f126-4795-98d9-a5721f7afcaa --group login --ci-build-id 9",
-    "mainPage": "cypress run --spec cypress/e2e/mainPage/**/* --record --key 28088171-f126-4795-98d9-a5721f7afcaa --group page --ci-build-id 9",
-    "movies": "cypress run --spec cypress/e2e/movies/**/* --record --key 28088171-f126-4795-98d9-a5721f7afcaa --group seats --ci-build-id 9",
-    "all": "npm run login | npm run mainPage | npm run movies",
-    "parallel": "concurrently \"npm run login\" \"npm run mainPage\" \"npm run movies\""
+    "login": "cypress run --spec cypress/e2e/Login/**/* --record --key 28088171-f126-4795-98d9-a5721f7afcaa --group login",
+    "mainPage": "cypress run --spec cypress/e2e/mainPage/**/* --record --key 28088171-f126-4795-98d9-a5721f7afcaa --group page",
+    "movies": "cypress run --spec cypress/e2e/movies/**/* --record --key 28088171-f126-4795-98d9-a5721f7afcaa --group seats",
+
+    "parallel": "concurrently \"npm run login\" \"npm run mainPage\" \"npm run movies\"",
+
+    "test:login:chrome": "cypress run --spec cypress/e2e/login/Login.cy.js --record --key 28088171-f126-4795-98d9-a5721f7afcaa --browser chrome --group login:chrome",
+    "test:invalidLogin:chrome": "cypress run --browser chrome --record --spec cypress/e2e/login/invalidLogin.cy.js --record --key 28088171-f126-4795-98d9-a5721f7afcaa --group invalidLogin:chrome",
+    "test:seats:chrome": "cypress run --browser chrome --record --spec cypress/e2e/movies/movies.cy.js --record --key 28088171-f126-4795-98d9-a5721f7afcaa --group seats:chrome",
+
+    "test:parallel:chrome": "concurrently \"npm run test:login:chrome\" \"npm run test:invalidLogin:chrome\" \"npm run test:seats:chrome\"",
+
+    "test:login:edge": "npx cypress run --browser edge --record --spec cypress/e2e/login/Login.cy.js --record --key 28088171-f126-4795-98d9-a5721f7afcaa --group login:edge",
+    "test:invalidLogin:edge": "npx cypress run --browser edge --record --spec cypress/e2e/login/invalidLogin.cy.js --record --key 28088171-f126-4795-98d9-a5721f7afcaa --group invalidLogin:edge",
+    "test:seats:edge": "npx cypress run --browser edge --record --spec cypress/e2e/movies/movies.cy.js --record --key 28088171-f126-4795-98d9-a5721f7afcaa --group seats:edge",
+
+    "test:parallel:edge": "concurrently \"npm run test:login:edge\" \"npm run test:invalidLogin:edge\" \"npm run test:seats:edge\"",
+
+    "test:parallel:folder1": "concurrently \"test:login:edge\" \"test:invalidLogin:edge\"",
+    "test:parallel:folder2": "concurrently \"test:login:chrome\" \"test:invalidLogin:chrome\"",
+    
+    "test:parallel:folder": "concurrently \"test:parallel:folder1\" \"test:parallel:folder2\""
   },
   "keywords": [],
   "author": "",

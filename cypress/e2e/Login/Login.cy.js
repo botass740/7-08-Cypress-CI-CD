@@ -14,11 +14,4 @@ describe("Тест аутентификации", () => {
     cy.get(selector.loginButton).click();
     cy.contains("Управление залами").should("be.visible");
   });
-
-  it("Логин незарегистрированного администратора", () => {
-    cy.get(selector.emailField).type(log.invalidEmail);
-    cy.get(selector.passField).type(log.invalidPass);
-    cy.get(selector.loginButton).click();
-    cy.contains("Ошибка авторизации!").should("be.visible");
-  });
 });

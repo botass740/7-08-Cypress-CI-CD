@@ -9,12 +9,7 @@ describe('Бронирование мест на выбранный фильм',
         cy.get(selector.movie).first().contains('13:00').click();
  
     seats.forEach(seat => {
-        
-        //cy.get(selector.scheme > selector.seatRow > selector.seatSeat).click();
-        //cy.get(selector.scheme > :nth-child(${row}) > ${seatSeat}`).click();
-
-        cy.get(`.buying-scheme__wrapper > :nth-child(${seat.row}) > :nth-child(${seat.seat})`).click();
-        
+        cy.get(`.buying-scheme__wrapper > :nth-child(${seat.row}) > :nth-child(${seat.seat})`).click();        
     });
         cy.get(selector.button).click();
 
